@@ -84,18 +84,22 @@
         .main-button {
             display: inline-block;
             padding: 15px 100px;
-            background-color: #0077cc;
-            color: white;
+            /* Remplacer le background-color par l'image */
+            background-image: url('biais cognitifs/biais_bg.png');
+            background-size: cover;       /* L'image couvre tout le bouton */
+            background-position: center;  /* Centrer l'image */
+            color: white;                 /* Couleur du texte */
             text-decoration: none;
             font-size: 20px;
             font-weight: bold;
             border-radius: 8px;
             transition: all 0.2s ease;
+            border: none;                 /* Supprime la bordure par défaut */
         }
-
-.main-button:hover {
-    background-color: #005fa3;
-}
+        
+        .main-button:hover {
+            opacity: 0.8; /* Légère transparence au survol pour effet */
+        }
 
         footer {
             padding: 20px;
@@ -135,9 +139,8 @@
         </a>
     </div>
     <div style="margin-top: 30px;">
-        <a href="biais_cognitifs.html" class="main-button">Biais cognitifs</a>
-        <img src="biais cognitifs/biais_bg.png" class="social-icon">
-    </div>
+    <a href="biais_cognitifs.html" class="main-button">Biais cognitifs</a>
+</div>
 </div>
 
 <footer>
