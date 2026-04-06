@@ -12,36 +12,46 @@
             font-size: 20px;
         }
 
+        header {
+            height: 33vh; /* 1/3 de la page */
+        }
+        
         .header-bg {
-            background-image: url('neurone_4.jpg');
+            background-image: url('biais cognitifs/biais_bg.png');
             background-size: cover;
             background-position: center;
-            height: 250px;
+            height: 100%;
             position: relative;
         }
-
+        
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.4);
             display: flex;
+            flex-direction: column; /* titre + logo */
             align-items: center;
-            justify-content: center;
+            justify-content: center; /* CENTRE VERTICALEMENT */
             color: white;
-            font-size: 55px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            text-align: center;
+            padding: 20px 0; /* ajoute un petit espace en haut et bas */
+            box-sizing: border-box; /* padding inclus dans la hauteur */
         }
-
+        
         .overlay h1 {
-        font-size: 55px;
-        font-weight: bold;
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        margin: 0;
-    }
+            font-size: 55px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            margin: 0;
+        }
+        
+        .overlay img {
+            width: clamp(150px, 40vw, 400px);
+            height: auto;
+            margin-top: 10px;
+        }
 
         .content {
             padding: 40px;
@@ -125,7 +135,8 @@
 <header>
     <div class="header-bg">
         <div class="overlay">
-            <h1>SynapSciences</h1>
+            <h1>Biais cognitifs</h1>
+            <img src="logo_synapsciences.png" alt="Logo SynapSciences">
         </div>
     </div>
 </header>
