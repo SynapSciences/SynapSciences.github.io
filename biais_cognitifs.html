@@ -11,39 +11,45 @@
             background-color: #f5f7fa;
         }
 
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%; /* indispensable pour que les vh soient fiables */
+        }
+        
         header {
             height: 33vh; /* 1/3 de l'écran */
+            position: relative; /* nécessaire pour overlay */
             background-image: url('biais cognitifs/biais_bg.png');
             background-size: cover;
             background-position: center;
-            position: relative; /* IMPORTANT */
         }
         
-        .header-content {
-            position: absolute; /* couvre tout le header */
+        .header-overlay {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center; /* CENTRE VERTICALEMENT ET HORIZONTALEMENT */
-            color: white;
+            flex-direction: column; /* titre + logo */
+            justify-content: center; /* CENTRE verticalement */
+            align-items: center;     /* CENTRE horizontalement */
             text-align: center;
-            gap: 15px;
+            color: white;
         }
         
-        header h1 {
+        .header-overlay h1 {
             font-size: 55px;
             font-weight: bold;
+            margin: 0; /* supprime la marge par défaut qui pousse vers le haut */
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            margin: 0;
         }
         
-        header img {
+        .header-overlay img {
             width: clamp(150px, 40vw, 400px);
             height: auto;
+            margin-top: 10px;
         }
         .section {
             padding: 50px 20px;
@@ -138,9 +144,9 @@
     </style>
 </head>
 <body>
-
+    
 <header>
-    <div class="header-content">
+    <div class="header-overlay">
         <h1>Biais cognitifs</h1>
         <img src="logo_synapsciences.png" alt="Logo SynapSciences">
     </div>
