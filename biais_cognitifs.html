@@ -129,12 +129,12 @@
         <img src="logo_synapsciences.png" alt="Logo SynapSciences">
     </div>
 </header>
-
-<!-- Section Biais de passéisme -->
+    
+<!-- Section Biais d'ancrage -->
 <div class="section">
-    <h2>Biais de passéisme</h2>
-    <p>Le biais de passéisme est le bias....</p>
-    <div id="passeisme" class="image-grid"></div>
+    <h2>Biais d'ancrage</h2>
+    <p>Le biais d'ancrage est le bias....</p>
+    <div id="ancrage" class="image-grid"></div>
 </div>
 
 <!-- Section Biais d'autorité -->
@@ -142,6 +142,20 @@
     <h2>Biais d'autorité</h2>
     <p>Le biais d'autorité est le bias....</p>
     <div id="autorite" class="image-grid"></div>
+</div>
+
+<!-- Section Biais de confirmation -->
+<div class="section">
+    <h2>Biais de confirmation</h2>
+    <p>Le biais de confirmation est le bias....</p>
+    <div id="confirmation" class="image-grid"></div>
+</div>
+
+<!-- Section Biais de passéisme -->
+<div class="section">
+    <h2>Biais de passéisme</h2>
+    <p>Le biais de passéisme est le bias....</p>
+    <div id="passeisme" class="image-grid"></div>
 </div>
 
 <!-- Section Biais de statu quo -->
@@ -185,8 +199,10 @@
     }
 }
     // Générer automatiquement les images
+    generateImages("passeisme", "biais cognitifs/Biais d'ancrage", 7);
+    generateImages("autorite", "biais cognitifs/Biais d'autorité", 7);
     generateImages("passeisme", "biais cognitifs/Le biais de passéisme", 6);
-    generateImages("autorite", "biais cognitifs/Biais d'autorité", 6);
+    generateImages("passeisme", "biais cognitifs/Biais de confirmation", 6);
     generateImages("statuquo", "biais cognitifs/Biais de statu quo", 6);
 </script>
 
