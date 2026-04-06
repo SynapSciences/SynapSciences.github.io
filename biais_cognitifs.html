@@ -86,9 +86,29 @@
             max-height: 90%;
             border-radius: 8px;
         }
-        .modal:target {
-            display: flex;
+
+        .modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+            z-index: 20;
         }
+
+        .modal .close-btn {
+            font-size: 50px;
+            top: 15px;
+            right: 20px;
+        }
+
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+
     </style>
 </head>
 <body>
@@ -122,28 +142,36 @@
 <script>
     // Fonction pour générer les images automatiquement
     function generateImages(folderId, folderPath, count) {
-        const container = document.getElementById(folderId);
-        for (let i = 1; i <= count; i++) {
-            const imgName = i + ".png"; // nom des images
-            const a = document.createElement('a');
-            a.href = "#" + folderId + i;
-            const img = document.createElement('img');
-            img.src = folderPath + "/" + imgName;
-            img.alt = "";
-            a.appendChild(img);
-            container.appendChild(a);
+    const container = document.getElementById(folderId);
+    for (let i = 1; i <= count; i++) {
+        const imgName = i + ".png"; 
+        const img = document.createElement('img');
+        img.src = folderPath + "/" + imgName;
+        img.alt = "";
+        container.appendChild(img);
 
-            // Crée le modal
-            const modal = document.createElement('div');
-            modal.id = folderId + i;
-            modal.className = "modal";
-            const modalImg = document.createElement('img');
-            modalImg.src = folderPath + "/" + imgName;
-            modal.appendChild(modalImg);
-            document.body.appendChild(modal);
-        }
+        // Crée le modal
+        const modal = document.createElement('div');
+        modal.id = folderId + i;
+        modal.className = "modal";
+
+        // Croix de fermeture
+        const closeBtn = document.createElement('span');
+        closeBtn.className = "close-btn";
+        closeBtn.innerHTML = "&times;";
+        closeBtn.onclick = () => { modal.style.display = "none"; };
+
+        const modalImg = document.createElement('img');
+        modalImg.src = folderPath + "/" + imgName;
+
+        modal.appendChild(closeBtn);
+        modal.appendChild(modalImg);
+        document.body.appendChild(modal);
+
+        // Affiche le modal au clic sur l'image
+        img.onclick = () => { modal.style.display = "flex"; };
     }
-
+}
     // Générer automatiquement les images
     generateImages("passeisme", "biais cognitifs/Le biais de passéisme", 6);
     generateImages("autorite", "biais cognitifs/Biais d'autorité", 6);
