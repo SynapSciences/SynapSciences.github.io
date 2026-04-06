@@ -2,40 +2,66 @@
 <html>
 <head>
     <title>Synapsciences</title>
+
     <style>
         body {
             font-family: Arial;
-            text-align: center;
+            margin: 0;
             background-color: #f5f7fa;
-            margin: 0;
+            text-align: center;
         }
 
-        header {
-            background-color: #1e2a38;
+        /* HEADER IMAGE */
+        .header-bg {
+            background-image: url('assets/background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            position: relative;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: white;
-            padding: 30px;
-        }
-
-        h1 {
-            margin: 0;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
 
         .content {
             padding: 40px;
         }
 
-        .btn {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
+        /* SOCIAL ICONS */
+        .social-buttons {
+            margin-top: 20px;
         }
 
-        .btn:hover {
-            background-color: #45a049;
+        .social-buttons a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.2s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 20px;
         }
     </style>
 </head>
@@ -44,54 +70,32 @@
 
 <header>
     <div class="header-bg">
-        <h1>Synapsciences</h1>
+        <div class="overlay">
+            Synapsciences
+        </div>
     </div>
 </header>
-
-<style>
-.header-bg {
-    background-image: url('neurone_4.jpg'); 
-    background-size: cover;      
-    background-position: center; 
-    height: 200px;               
-    display: flex;
-    align-items: center;         
-    justify-content: center;     
-    color: white;                
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); 
-    font-family: Arial, sans-serif;
-}
-</style>
 
 <div class="content">
     <h2>Bienvenue</h2>
     <p>On explique le cerveau simplement 🧠</p>
 
-    <a class="btn" href="https://github.com/synapsciences">GitHub</a>
-    <a class="btn" href="https://www.instagram.com/synapsciences">Instagram</a>
-    <a class="btn" href="https://www.linkedin.com/company/synapsciences/">LinkedIn</a>
-    <a class="btn" href="https://linktr.ee/synapsciences">Linktree</a>
-    <a class="btn" href="contact.html">Contact</a>
-
+    <div class="social-buttons">
+        <a href="https://github.com/synapsciences">
+            <img src="assets/github.png" class="social-icon">
+        </a>
+        <a href="https://instagram.com/synapsciences">
+            <img src="assets/insta.avif" class="social-icon">
+        </a>
+        <a href="https://linkedin.com/in/synapsciences">
+            <img src="assets/linkedin.png" class="social-icon">
+        </a>
+    </div>
 </div>
 
-
-
-
-</body>
-
 <footer>
-    <img src="Logo SynapSciences.png" width="150">
+    <img src="assets/logo.png" width="120">
 </footer>
 
-<style>
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f5f7fa;
-    position: relative;
-    bottom: 0;
-}
-</style>
-    
+</body>
 </html>
