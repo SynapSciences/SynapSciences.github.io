@@ -17,24 +17,26 @@
             height: 100%; /* indispensable pour que les vh soient fiables */
         }
         
+        
         header {
-            position: relative;          /* essentiel pour l'overlay */
-            height: 33vh;                /* 1/3 de l'écran */
+            position: relative;
+            min-height: 33vh;      /* assure la hauteur même si images non chargées */
+            height: 33vh;
             background-image: url('biais cognitifs/biais_bg.png');
             background-size: cover;
             background-position: center;
+            overflow: hidden;       /* empêche que le contenu dépasse */
         }
         
         .header-overlay {
             position: absolute;
-            top: 0;
+            top: 15%; /* descend le texte */
             left: 0;
             width: 100%;
-            height: 100%;               /* prend tout le header */
             display: flex;
             flex-direction: column;
-            justify-content: center;    /* CENTRE verticalement */
-            align-items: center;        /* CENTRE horizontalement */
+            justify-content: center; 
+            align-items: center;
             text-align: center;
             color: white;
         }
@@ -193,7 +195,7 @@
     <span class="next">&#10095;</span> <!-- flèche droite -->
     <span class="close-btn">&times;</span>
 </div>
-
+<link rel="preload" as="image" href="logo_synapsciences.png">
 <script>
     // Fonction pour générer les images automatiquement
     function generateImages(folderId, folderPath, count) {
