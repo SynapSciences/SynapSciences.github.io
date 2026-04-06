@@ -15,15 +15,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* commence en haut */
             height: 300px;
+            padding-top: 80px; /* descends le titre */
+            gap: 20px; /* espace entre titre et logo */
+            
             background-image: url('biais cognitifs/biais_bg.png'); 
-            background-size: cover;
+            background-size: contain;
             background-position: center;
+            background-repeat: no-repeat;
             color: white;
             text-align: center;
-            gap: 20px;
-            padding-top: 60px;
         }
         
         header h1 {
@@ -35,8 +37,8 @@
         header img {
             width: 400px;
             height: auto;
+            margin-top: 20px;
         }
-
         .section {
             padding: 50px 20px;
         }
