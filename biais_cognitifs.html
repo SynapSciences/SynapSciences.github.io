@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Biais Cognitifs - SynapSciences</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+            background-color: #f5f7fa;
+        }
+
+        /* Header avec image de fond et logo */
+        header {
+            position: relative;
+            height: 300px;
+            background-image: url('neurone_4.jpg'); 
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        header h1 {
+            margin: 0;
+            padding-top: 40px;
+            font-size: 55px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        header img {
+            margin-top: 20px;
+            width: 120px;
+        }
+
+        /* Section des biais */
+        .section {
+            padding: 50px 20px;
+        }
+        .section h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .section p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Grille d'images */
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .image-grid img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+        .image-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal pour voir l'image en grand */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        .modal:target {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Biais cognitifs</h1>
+    <img src="Logo SynapSciences.png" alt="Logo SynapSciences">
+</header>
+
+<!-- Section Biais de passéisme -->
+<div class="section">
+    <h2>Biais de passéisme</h2>
+    <p>Le biais de passéisme est le bias....</p>
+    <div id="passeisme" class="image-grid"></div>
+</div>
+
+<!-- Section Biais d'autorité -->
+<div class="section">
+    <h2>Biais d'autorité</h2>
+    <p>Le biais d'autorité est le bias....</p>
+    <div id="autorite" class="image-grid"></div>
+</div>
+
+<!-- Section Biais de statu quo -->
+<div class="section">
+    <h2>Biais de statu quo</h2>
+    <p>Le biais de statu quo est le bias....</p>
+    <div id="statuquo" class="image-grid"></div>
+</div>
+
+<script>
+    // Fonction pour générer les images automatiquement
+    function generateImages(folderId, folderPath, count) {
+        const container = document.getElementById(folderId);
+        for (let i = 1; i <= count; i++) {
+            const imgName = i + ".png"; // nom des images
+            const a = document.createElement('a');
+            a.href = "#" + folderId + i;
+            const img = document.createElement('img');
+            img.src = folderPath + "/" + imgName;
+            img.alt = "";
+            a.appendChild(img);
+            container.appendChild(a);
+
+            // Crée le modal
+            const modal = document.createElement('div');
+            modal.id = folderId + i;
+            modal.className = "modal";
+            const modalImg = document.createElement('img');
+            modalImg.src = folderPath + "/" + imgName;
+            modal.appendChild(modalImg);
+            document.body.appendChild(modal);
+        }
+    }
+
+    // Générer automatiquement les images
+    generateImages("passeisme", "biais_cognitifs/Biais_de_passeisme", 6);
+    generateImages("autorite", "biais_cognitifs/Biais_d_autorite", 6);
+    generateImages("statuquo", "biais_cognitifs/Biais_de_statu_quo", 6);
+</script>
+
+</body>
+</html>
