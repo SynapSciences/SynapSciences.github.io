@@ -14,23 +14,23 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%; /* indispensable pour que les vh soient fiables */
+            height: 100%; 
         }
         
         
         header {
             position: relative;
-            min-height: 33vh;      /* assure la hauteur même si images non chargées */
-            height: 33vh;
+            min-height: 20vh;
+            height: 20vh;
             background-image: url('biais cognitifs/biais_bg.png');
             background-size: cover;
             background-position: center;
-            overflow: hidden;       /* empêche que le contenu dépasse */
+            overflow: hidden;
         }
         
         .header-overlay {
             position: absolute;
-            top: 15%; /* descend le texte */
+            top: 15%;
             left: 0;
             width: 100%;
             display: flex;
@@ -44,7 +44,7 @@
         .header-overlay h1 {
             font-size: 55px;
             font-weight: bold;
-            margin: 0;                  /* supprime toute marge par défaut */
+            margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
         }
         
@@ -190,24 +190,20 @@
 </div>
 
 <div id="modal1" class="modal">
-    <span class="prev">&#10094;</span> <!-- flèche gauche -->
+    <span class="prev">&#10094;</span>
     <img src="biais cognitifs/Le biais de passéisme/1.png">
-    <span class="next">&#10095;</span> <!-- flèche droite -->
+    <span class="next">&#10095;</span>
     <span class="close-btn">&times;</span>
 </div>
 <link rel="preload" as="image" href="logo_synapsciences.png">
 <script>
-    // Fonction pour générer les images automatiquement
     function generateImages(folderId, folderPath, count) {
         const container = document.getElementById(folderId);
-        let currentIndex = 0; // pour savoir quelle image est affichée
-    
+        let currentIndex = 0;
         const modal = document.createElement('div');
         modal.className = "modal";
-    
         const modalImg = document.createElement('img');
         modal.appendChild(modalImg);
-    
         const closeBtn = document.createElement('span');
         closeBtn.className = "close-btn";
         closeBtn.innerHTML = "&times;";
@@ -218,7 +214,6 @@
         prev.className = "prev";
         prev.innerHTML = "&#10094;";
         modal.appendChild(prev);
-    
         const next = document.createElement('span');
         next.className = "next";
         next.innerHTML = "&#10095;";
@@ -226,7 +221,6 @@
     
         document.body.appendChild(modal);
     
-        // Tableau des images pour ce dossier
         const imgs = [];
         for (let i = 1; i <= count; i++) {
             const img = document.createElement('img');
@@ -243,7 +237,6 @@
             }
         }
     
-        // Navigation flèches
         prev.onclick = () => {
             currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
             modalImg.src = imgs[currentIndex];
@@ -254,7 +247,6 @@
         }
     }
 
-    // Générer automatiquement les images
     generateImages("ancrage", "biais cognitifs/Biais d'ancrage", 7);
     generateImages("autorite", "biais cognitifs/Biais d'autorité", 7);
     generateImages("passeisme", "biais cognitifs/Le biais de passéisme", 6);
