@@ -19,13 +19,12 @@
         
         
         header {
-            position: relative;
-            min-height: 20vh;
-            height: 20vh;
+            min-height: auto;
+            height: auto;
+            padding: 10px 0; /* petit padding autour du contenu */
             background-image: url('FS/fs_bg(1).png');
             background-size: cover;
             background-position: center;
-            overflow: hidden;
         }
         
         .header-overlay {
@@ -35,8 +34,8 @@
             align-items: center;
             text-align: center;
             color: white;
-            padding-top: 20px;
             justify-content: flex-start;
+            padding-top: 0; /* <-- supprime l'espace */
         }
         
         .header-overlay h1 {
@@ -50,7 +49,7 @@
         .header-overlay img {
             width: 300px;
             height: auto;
-            margin-top: 0px;
+            margin-top: 5px;
         }
         .section {
             padding: 50px 20px;
