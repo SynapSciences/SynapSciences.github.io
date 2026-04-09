@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Biais Cognitifs - SynapSciences</title>
+    <title>Femmes en Sciences - SynapSciences</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,51 +11,50 @@
             background-color: #f5f7fa;
         }
 
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%; 
-        }
-        
         
         header {
-            position: relative;
-            min-height: 20vh;
-            height: 20vh;
+            height: 20vh; 
+            margin-bottom: 0;
+        }
+        
+        .header-bg {
             background-image: url('biais cognitifs/biais_bg.png');
             background-size: cover;
             background-position: center;
-            overflow: hidden;
+            height: 100%;
+            position: relative;
         }
         
-        .header-overlay {
+        .overlay {
             position: absolute;
-            top: 15%;
+            top: 0;
             left: 0;
             width: 100%;
+            height: 100%;
             display: flex;
-            flex-direction: column;
-            justify-content: center; 
+            flex-direction: column; 
             align-items: center;
-            text-align: center;
+            justify-content: center; 
             color: white;
+            text-align: center;
+            padding: 0; 
+            box-sizing: border-box; 
         }
         
-        .header-overlay h1 {
+        .overlay h1 {
             font-size: 55px;
             font-weight: bold;
-            margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            margin: 0;
         }
         
-        .header-overlay img {
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translateX(-85%);
+        .overlay img {
+            width: clamp(150px, 40vw, 400px);
+            height: auto;
+            margin-top: 10px;
         }
         .section {
-            padding: 50px 20px;
+            padding: 30px 20px;
         }
         .section h2 {
             font-size: 28px;
@@ -144,16 +143,27 @@
         .modal .prev { left: 20px; }
         .modal .next { right: 20px; }
 
+        .content img {
+            display: block;
+            margin: 0 auto;
+        }
+
     </style>
 </head>
-<body>
     
 <header>
-    <div class="header-overlay">
-        <h1>Biais cognitifs</h1>
-        <img src="logo_synapsciences.png" alt="Logo SynapSciences">
+    <div class="header-bg">
+        <div class="overlay">
+            <h1>Femmes en Sciences</h1>
+        </div>
     </div>
 </header>
+    
+<body>
+<div class="content">
+    <img src="logo_synapsciences.png" width="400">
+    </div>
+    
 
 <!-- Section Biais cognitifs -->
 <div class="section">
@@ -238,6 +248,7 @@
     <span class="next">&#10095;</span>
     <span class="close-btn">&times;</span>
 </div>
+    
 <link rel="preload" as="image" href="logo_synapsciences.png">
 <script>
     function generateImages(folderId, folderPath, count) {
@@ -301,6 +312,7 @@
     generateImages("pygmalion", "biais cognitifs/Effet Pygmalion", 7);
     generateImages("passeisme", "biais cognitifs/Le biais de passéisme", 6);
     generateImages("biais", "biais cognitifs/Qu'est-ce que les biais cognitifs", 6);
+    
 </script>
 
 </body>
