@@ -233,26 +233,26 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
 
         if (videoIndexes.includes(i)) {
             const videoMap = {
-                1: "Vidéomicroscopie1.mp4"
+                1: "Vidéomicroscopie1.mp4",
+                4: "Vidéomicroscopie2.mp4"
             };
             
             if (videoIndexes.includes(i)) {
                 const filename = videoMap[i] || `${i}.mp4`;
                 src = `${folderPath}/${filename}`;
-            }
-
-            element = document.createElement('video');
-
-            const source = document.createElement('source');
-            source.src = src;
-            source.type = "video/mp4";
             
-            element.appendChild(source);
+                element = document.createElement('video');
             
-            element.muted = true;
-            element.loop = true;
-            element.autoplay = true;
-            element.playsInline = true;
+                const source = document.createElement('source');
+                source.src = src;
+                source.type = "video/mp4";
+            
+                element.appendChild(source);
+            
+                element.muted = true;
+                element.loop = true;
+                element.autoplay = true;
+                element.playsInline = true;
         } else {
             src = `${folderPath}/${i}.png`;
 
