@@ -232,7 +232,14 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
         let src;
 
         if (videoIndexes.includes(i)) {
-            src = `${folderPath}/${i}.mp4`;
+            const videoMap = {
+                1: "Vidéomicroscopie1.mp4"
+            };
+            
+            if (videoIndexes.includes(i)) {
+                const filename = videoMap[i] || `${i}.mp4`;
+                src = `${folderPath}/${filename}`;
+            }
 
             element = document.createElement('video');
 
