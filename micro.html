@@ -201,62 +201,118 @@
     
 <link rel="preload" as="image" href="logo_synapsciences.png">
 <script>
-    function generateImages(folderId, folderPath, count) {
-        const container = document.getElementById(folderId);
-        let currentIndex = 0;
-        const modal = document.createElement('div');
-        modal.className = "modal";
-        const modalImg = document.createElement('img');
-        modal.appendChild(modalImg);
-        const closeBtn = document.createElement('span');
-        closeBtn.className = "close-btn";
-        closeBtn.innerHTML = "&times;";
-        closeBtn.onclick = () => { modal.style.display = "none"; };
-        modal.appendChild(closeBtn);
-    
-        const prev = document.createElement('span');
-        prev.className = "prev";
-        prev.innerHTML = "&#10094;";
-        modal.appendChild(prev);
-        const next = document.createElement('span');
-        next.className = "next";
-        next.innerHTML = "&#10095;";
-        modal.appendChild(next);
-    
-        document.body.appendChild(modal);
-    
-        const imgs = [];
-        for (let i = 1; i <= count; i++) {
-            const img = document.createElement('img');
-            img.src = `${folderPath}/${i}.png`;
-            img.alt = "";
-            img.style.cursor = "pointer";
-            container.appendChild(img);
-            imgs.push(img.src);
-    
-            img.onclick = () => {
-                currentIndex = i - 1;
-                modalImg.src = imgs[currentIndex];
-                modal.style.display = "flex";
-            }
+function generateImages(folderId, folderPath, count, videoIndexes = []) {
+    const container = document.getElementById(folderId);
+    let currentIndex = 0;
+
+    // MODAL
+    const modal = document.createElement('div');
+    modal.className = "modal";
+
+    const modalContent = document.createElement('div');
+    modal.appendChild(modalContent);
+
+    const closeBtn = document.createElement('span');
+    closeBtn.className = "close-btn";
+    closeBtn.innerHTML = "&times;";
+    closeBtn.onclick = () => modal.style.display = "none";
+    modal.appendChild(closeBtn);
+
+    const prev = document.createElement('span');
+    prev.className = "prev";
+    prev.innerHTML = "&#10094;";
+    modal.appendChild(prev);
+
+    const next = document.createElement('span');
+    next.className = "next";
+    next.innerHTML = "&#10095;";
+    modal.appendChild(next);
+
+    document.body.appendChild(modal);
+
+    const files = [];
+
+    // CRÉATION DES ÉLÉMENTS
+    for (let i = 1; i <= count; i++) {
+        let element;
+        let src;
+
+        if (videoIndexes.includes(i)) {
+            src = `${folderPath}/${i}.mp4`;
+
+            element = document.createElement('video');
+            element.src = src;
+            element.muted = true;
+            element.loop = true;
+            element.autoplay = true;
+            element.playsInline = true;
+        } else {
+            src = `${folderPath}/${i}.png`;
+
+            element = document.createElement('img');
+            element.src = src;
         }
-    
-        prev.onclick = () => {
-            currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-            modalImg.src = imgs[currentIndex];
-        }
-        next.onclick = () => {
-            currentIndex = (currentIndex + 1) % imgs.length;
-            modalImg.src = imgs[currentIndex];
-        }
+
+        // STYLE UNIFIÉ
+        element.style.width = "150px";
+        element.style.height = "150px";
+        element.style.objectFit = "cover";
+        element.style.borderRadius = "8px";
+        element.style.cursor = "pointer";
+        element.style.transition = "transform 0.2s ease";
+
+        element.onmouseover = () => element.style.transform = "scale(1.05)";
+        element.onmouseout = () => element.style.transform = "scale(1)";
+
+        container.appendChild(element);
+        files.push(src);
+
+        element.onclick = () => {
+            currentIndex = i - 1;
+            openModal();
+        };
     }
 
-    generateImages("confocal", "micro/confocal", 7);
-    generateImages("electronique", "micro/electronique", 8);
-    generateImages("super-reso", "micro/super-reso", 9);
-    generateImages("videomicro", "micro/videomicro", 7);
-    
-</script>
+    function openModal() {
+        modalContent.innerHTML = "";
+        const src = files[currentIndex];
 
+        if (src.endsWith(".mp4")) {
+            const video = document.createElement("video");
+            video.src = src;
+            video.controls = true;
+            video.autoplay = true;
+            video.style.maxWidth = "90%";
+            video.style.maxHeight = "90%";
+            modalContent.appendChild(video);
+        } else {
+            const img = document.createElement("img");
+            img.src = src;
+            img.style.maxWidth = "90%";
+            img.style.maxHeight = "90%";
+            modalContent.appendChild(img);
+        }
+
+        modal.style.display = "flex";
+    }
+
+    prev.onclick = () => {
+        currentIndex = (currentIndex - 1 + files.length) % files.length;
+        openModal();
+    };
+
+    next.onclick = () => {
+        currentIndex = (currentIndex + 1) % files.length;
+        openModal();
+    };
+}
+
+generateImages("confocal", "micro/confocal", 7);
+generateImages("electronique", "micro/electronique", 8);
+generateImages("super-reso", "micro/super-reso", 9);
+generateImages("video", "micro/videomicro", 9, [1, 4]);
+
+</script>
+    
 </body>
 </html>
