@@ -241,7 +241,13 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
             src = `${folderPath}/${i}.mp4`;
 
             element = document.createElement('video');
-            element.src = src;
+
+            const source = document.createElement('source');
+            source.src = src;
+            source.type = "video/mp4";
+            
+            element.appendChild(source);
+            
             element.muted = true;
             element.loop = true;
             element.autoplay = true;
@@ -279,11 +285,19 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
 
         if (src.endsWith(".mp4")) {
             const video = document.createElement("video");
-            video.src = src;
+    
+            const source = document.createElement("source");
+            source.src = src;
+            source.type = "video/mp4";
+            
+            video.appendChild(source);
+            
             video.controls = true;
             video.autoplay = true;
-            video.style.maxWidth = "90%";
-            video.style.maxHeight = "90%";
+            video.style.maxWidth = "90vw";
+            video.style.maxHeight = "90vh";
+            video.style.objectFit = "contain";
+            
             modalContent.appendChild(video);
         } else {
             const img = document.createElement("img");
