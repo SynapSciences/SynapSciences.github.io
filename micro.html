@@ -199,7 +199,6 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
     const container = document.getElementById(folderId);
     let currentIndex = 0;
 
-    // MODAL
     const modal = document.createElement('div');
     modal.className = "modal";
 
@@ -226,7 +225,6 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
 
     const files = [];
 
-    // CRÉATION DES ÉLÉMENTS
     for (let i = 1; i <= count; i++) {
         let element;
         let src;
@@ -262,7 +260,6 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
             element.src = src;
         }
 
-        // STYLE UNIFIÉ
         element.style.width = "150px";
         element.style.height = "150px";
         element.style.objectFit = "cover";
