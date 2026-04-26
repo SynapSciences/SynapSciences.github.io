@@ -261,7 +261,18 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
     const closeBtn = document.createElement('span');
     closeBtn.className = "close-btn";
     closeBtn.innerHTML = "&times;";
-    closeBtn.onclick = () => modal.style.display = "none";
+    closeBtn.onclick = () => {
+        const video = modalContent.querySelector("video");
+        
+        if (video) {
+            video.pause();      
+            video.currentTime = 0; 
+            video.muted = true; 
+        }
+    
+        modal.style.display = "none";
+        modalContent.innerHTML = "";
+    };
     modal.appendChild(closeBtn);
 
     const prev = document.createElement('span');
@@ -335,7 +346,15 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
     }
 
     function openModal() {
+        const oldVideo = modalContent.querySelector("video");
+        if (oldVideo) {
+            oldVideo.pause();
+            oldVideo.currentTime = 0;
+            oldVideo.muted = true;
+        }
+    
         modalContent.innerHTML = "";
+    
         const src = files[currentIndex];
 
         if (src.endsWith(".mp4")) {
