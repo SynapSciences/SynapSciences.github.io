@@ -301,9 +301,11 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
             element.appendChild(source);
         
             element.muted = true;
-            element.loop = true;
+            element.defaultMuted = true; 
             element.autoplay = true;
+            element.loop = true;
             element.playsInline = true;
+            element.controls = false;
         
         } else {
         
@@ -347,6 +349,9 @@ function generateImages(folderId, folderPath, count, videoIndexes = []) {
             
             video.controls = true;
             video.autoplay = true;
+            video.muted = false;
+            video.volume = 1.0;
+            video.play().catch(() => {}); 
             video.style.maxWidth = "90vw";
             video.style.maxHeight = "90vh";
             video.style.objectFit = "contain";
